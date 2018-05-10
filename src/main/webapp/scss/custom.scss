@@ -1,0 +1,30 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+
+h1 {
+  font-size: 1.4rem;
+}
+
+@include media-breakpoint-up(sm) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+}
+
+@include media-breakpoint-up(md) {
+  h1 {
+    font-size: 2rem;
+  }
+
+}
+
+@include media-breakpoint-up(lg) {
+  h1 {
+    font-size: 2.4rem;
+  }
+}

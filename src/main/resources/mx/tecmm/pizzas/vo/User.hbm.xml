@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/05/2018 09:30:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.tecmm.pizzas.vo.User" table="user" catalog="pizzeria" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="account" class="mx.tecmm.pizzas.vo.Account" fetch="select">
+            <column name="account_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="province" class="mx.tecmm.pizzas.vo.Province" fetch="select">
+            <column name="Province_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="60" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="60" not-null="true" />
+        </property>
+        <property name="secondLastName" type="string">
+            <column name="secondLastName" length="60" not-null="true" />
+        </property>
+        <property name="status" type="boolean">
+            <column name="status" not-null="true" />
+        </property>
+        <one-to-one name="creditcard" class="mx.tecmm.pizzas.vo.Creditcard"></one-to-one>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="mx.tecmm.pizzas.vo.Order" />
+        </set>
+        <one-to-one name="address" class="mx.tecmm.pizzas.vo.Address"></one-to-one>
+    </class>
+</hibernate-mapping>
