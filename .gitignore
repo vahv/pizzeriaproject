@@ -1,0 +1,5 @@
+target/
+nbactions.xml
+lib/
+src/test/
+src/main/resources/hibernate.cfg.xml
