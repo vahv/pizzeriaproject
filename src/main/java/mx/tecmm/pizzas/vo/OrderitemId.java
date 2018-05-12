@@ -1,5 +1,5 @@
 package mx.tecmm.pizzas.vo;
-// Generated 9/05/2018 09:30:54 PM by Hibernate Tools 4.3.1
+// Generated 9/05/2018 11:04:40 PM by Hibernate Tools 4.3.1
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 9/05/2018 09:30:58 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 9/05/2018 11:04:41 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="mx.tecmm.pizzas.vo.Country" table="country" catalog="pizzeria" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
