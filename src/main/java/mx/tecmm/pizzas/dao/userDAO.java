@@ -63,13 +63,13 @@ public class userDAO {
         return 0;
     }
     
-    static public int addAddress(Address addres){
+    static public int addAddress(Address adres){
         Session session = null;
         Transaction transaction = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();//desde aqui se inician las transacciones
-            session.save(addres);
+            session.save(adres);
             transaction.commit();
             return 1;
         }catch(HibernateException ex){

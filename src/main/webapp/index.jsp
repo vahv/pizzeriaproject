@@ -36,7 +36,7 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-ingresar" role="tabpanel" aria-labelledby="pills-home-tab">
                             <h1>Ingresar a su cuenta</h1>
-                            <form id="ingreso">
+                            <form id="ingreso" >
                                 <div class="form-group">
                                     <label for="InputEmail1">Email</label>
                                     <input type="email" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp" placeholder="Escriba su email">
@@ -50,7 +50,7 @@
                         </div>
                         <div class="tab-pane fade" id="pills-registrar" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <h1>Registrar cuenta</h1>
-                            <form id="registro">
+                            <form id="registro" method="POST" action="nuevoregistro">
                                 <div class="form-group">
                                     <label for="inputEmail">Correo</label>
                                     <input type="email" class="form-control" id="inputEmail2" name="inputEmail2" placeholder="Email">
@@ -99,7 +99,7 @@
                                         <input type="text" class="form-control" id="inputNumber2" name="inputNumber2">
                                     </div>
                                 </div>
-                                <input id="nuevoregistro" value="Registrar Cuenta" type="buttont" class="btn btn-primary mb-2 wm-25 ">
+                                <input id="nuevoregistro" value="Registrar Cuenta" type="submit" class="btn btn-primary mb-2 wm-25 ">
                             </form>
                         </div>
                     </div>

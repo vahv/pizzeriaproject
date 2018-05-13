@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import mx.tecmm.pizzas.dao.userDAO;
 import mx.tecmm.pizzas.vo.Account;
 import mx.tecmm.pizzas.vo.Address;
@@ -40,6 +41,7 @@ public class nuevoregistro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            HttpSession sesion = request.getSession(true);
             String email = request.getParameter("inputEmail2");
             String contraseña = request.getParameter("inputPassword2");
             String contraseña2 = request.getParameter("inputPassword3");
@@ -84,8 +86,9 @@ public class nuevoregistro extends HttpServlet {
                 adres.setUserId(userDAO.addUser(user));
                 int  i = userDAO.addAddress(adres);
                 if (i == 1) {
-                    request.login(cuenta.getEmail(), cuenta.getPassword());
-                    
+                    request.setAttribute("usuario", user.getName());
+                    request.setAttribute("datos", user);
+                    response.sendRedirect("http://localhost:8080"+request.getContextPath()+"/menu.jsp");
                 }
             }else
                 out.print("equivocado");
