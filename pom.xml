@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mx.tecmm</groupId>
-    <artifactId>Pizzeria</artifactId>
+    <artifactId>pizzas</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>Pizzeria</name>
+    <name>pizzas</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
