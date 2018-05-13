@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/05/2018 07:39:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.tecmm.pizzas.vo.Pizzasize" table="pizzasize" catalog="pizzeria" optimistic-lock="version">
+        <composite-id name="id" class="mx.tecmm.pizzas.vo.PizzasizeId">
+            <key-property name="pizzaId" type="int">
+                <column name="Pizza_id" />
+            </key-property>
+            <key-property name="sizeId" type="int">
+                <column name="Size_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="pizza" class="mx.tecmm.pizzas.vo.Pizza" update="false" insert="false" fetch="select">
+            <column name="Pizza_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="size" class="mx.tecmm.pizzas.vo.Size" update="false" insert="false" fetch="select">
+            <column name="Size_id" not-null="true" />
+        </many-to-one>
+        <property name="precio" type="double">
+            <column name="precio" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

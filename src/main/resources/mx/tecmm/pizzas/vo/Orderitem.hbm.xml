@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/05/2018 07:39:38 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.tecmm.pizzas.vo.Orderitem" table="orderitem" catalog="pizzeria" optimistic-lock="version">
+        <composite-id name="id" class="mx.tecmm.pizzas.vo.OrderitemId">
+            <key-property name="orderId" type="int">
+                <column name="order_id" />
+            </key-property>
+            <key-property name="itemId" type="int">
+                <column name="item_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="order" class="mx.tecmm.pizzas.vo.Order" update="false" insert="false" fetch="select">
+            <column name="order_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pizza" class="mx.tecmm.pizzas.vo.Pizza" update="false" insert="false" fetch="select">
+            <column name="item_id" not-null="true" />
+        </many-to-one>
+        <property name="orderElementName" type="string">
+            <column name="OrderElementName" length="80" not-null="true" />
+        </property>
+        <property name="extraToppings" type="boolean">
+            <column name="extraToppings" not-null="true" />
+        </property>
+        <property name="price" type="double">
+            <column name="price" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="quantity" type="string">
+            <column name="quantity" length="45" not-null="true" />
+        </property>
+        <property name="status" type="boolean">
+            <column name="status" not-null="true" />
+        </property>
+        <set name="extratoppings" table="extratopping" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="order_id" not-null="true" />
+                <column name="item_id" not-null="true" />
+            </key>
+            <one-to-many class="mx.tecmm.pizzas.vo.Extratopping" />
+        </set>
+    </class>
+</hibernate-mapping>

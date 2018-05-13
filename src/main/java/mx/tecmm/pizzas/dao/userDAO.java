@@ -19,15 +19,15 @@ import org.hibernate.Transaction;
  * @author daniel
  */
 public class userDAO {
-    static public int addUser(Account acoount){
+    static public int addUser(Account acount){
         Session session = null;
         Transaction transaction = null;
         try{
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();//desde aqui se inician las transacciones
-            session.saveOrUpdate(acoount);
+            session.saveOrUpdate(acount);
             transaction.commit();
-            return 1;
+            return acount.getId();
         }catch(HibernateException ex){
             transaction.rollback();
         }

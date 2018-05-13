@@ -7,6 +7,8 @@ package mx.tecmm.pizzas.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +44,7 @@ public class nuevoregistro extends HttpServlet {
             String contraseña2 = request.getParameter("inputPassword3");
             String nombre = request.getParameter("inputName");
             String calle = request.getParameter("inputStreet");
-            Integer numeroint = Integer.parseInt( request.getParameter("inputNumber1"));
+            String numeroint = request.getParameter("inputNumber1");
             if (!request.getParameter("inputNumber2").equals("")) {
                 Integer numeroext = Integer.parseInt(request.getParameter("inputNumber2"));
             }
@@ -55,10 +57,11 @@ public class nuevoregistro extends HttpServlet {
                 adres.setStreet(calle);
                 adres.setBuildingNumber(numeroint);
                 User user = new User();
-                user.setAddress(address);
+                user.setAddress(adres);
                 user.setName(nombre);
-                user.set;
-                int i = userDAO.addUser(user);
+                user.setAccount(cuenta);
+
+                int i = userDAO.addUser(cuenta);
                 out.print(i);
             }else
                 out.print("equivocado");
