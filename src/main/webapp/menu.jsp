@@ -65,58 +65,9 @@
           </div>
 
           <h1 class="display-5 bg-green text-white text-center">Categoría 2</h1>
-          <div class="row">
-
-            <div class="col-lg-3 col-md-4 col-6 mb-2">
-              <div class="card" >
-                <img class="card-img-top" src="assets\pizzas\bbq-pizza-pork.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cerdo BBQ</h5>
-                  <p class="card-text">Ingredientes: </p>
-                  <a class="btn btn-primary btn-sm" href="">Ver Pizza</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-6 mb-2">
-              <div class="card" >
-                <img class="card-img-top" src="assets\pizzas\bbq-pizza-pork.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cerdo BBQ</h5>
-                  <p class="card-text">Ingredientes: </p>
-                  <a class="btn btn-primary btn-sm" href="">Ver Pizza</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-6 mb-2">
-              <div class="card" >
-                <img class="card-img-top" src="assets\pizzas\bbq-pizza-pork.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cerdo BBQ</h5>
-                  <p class="card-text">Ingredientes: </p>
-                  <a class="btn btn-primary btn-sm" href="">Ver Pizza</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-6 mb-2">
-              <div class="card" >
-                <img class="card-img-top" src="assets\pizzas\bbq-pizza-pork.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Cerdo BBQ</h5>
-                  <p class="card-text">Ingredientes: </p>
-                  <a class="btn btn-primary btn-sm" href="">Ver Pizza</a>
-                </div>
-              </div>
-            </div>
-
+          <div class="row" id="category2">
 
           </div>
-
-
-
-
     </main>
 
 
@@ -125,20 +76,23 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Cerdo en BBQ</h4>
+                        <h4 class="modal-title"></h4>  
                     </div>
                     <div class="modal-body">
+                    <h2 class="display-5 bg-green text-white text-center rounded">Ingredientes</h2>  
+                    <h5 class="modal-subtitle"></h5>
                     <form  id="form" action=""  method="post">
+                        <input id="pizzaid" type="hidden" name="id" value="" />
                         <div class="row justify-content-md-center">           
                             <div class="col-12 bg-white">
-                            <h1 class="display-5 bg-green text-white text-center rounded">Seleccionar Tamaño</h1>
+                            <h2 class="display-5 bg-green text-white text-center rounded">Seleccionar Tamaño</h2>
                             <div class="row">
                               <div class="col">
                                 <label>
                                   <h5 class="text-center">Mediana</h5>
                                   <input type="radio" class="frm-button" name="tamanio" value="Mediana"/>
                                   <img src="assets\tamaños\Pizzas-mediana.png" class="img-fluid rounded">
-                                  <input id="MedianaPrecio" type="hidden" name="precio" value="100" />
+                                  <input id="MedianaPrecio" type="hidden" name="precio" value="" />
                                 </label>
                               </div>
                               <div class="col">
@@ -146,7 +100,7 @@
                                 <label>
                                     <input type="radio" class="frm-button" name="tamanio" value="Grande"/>
                                   <img src="assets\tamaños\Pizzas-grande.png" class="img-fluid rounded">
-                                  <input id="GrandePrecio" type="hidden" name="precio" value="140" />
+                                  <input id="GrandePrecio" type="hidden" name="precio" value="" />
                                 </label>
                               </div>
                               <div class="col">
@@ -154,41 +108,14 @@
                                 <label>
                                   <input type="radio" class="frm-button" name="tamanio" value="Familiar"/>
                                   <img src="assets\tamaños\Pizzas-familiar.png" class="img-fluid rounded">
-                                  <input id="FamiliarPrecio"type="hidden" name="precio" value="180" />
+                                  <input id="FamiliarPrecio"type="hidden" name="precio" value="" />
                                 </label>
                               </div>
                             </div>
 
-                            <h1 class="display-5 bg-green text-white text-center rounded">Seleccionar Ingredientes</h1>
-                            <div class="row" id="ingredientes">
-                              <div class="col-6 col-lg-4">
-                                <input class="frm-button" type="checkbox" value="Pepperoni" id="ingrediente1">
-                                <label  for="ingrediente2">
-                                  Pepperoni
-                                </label>
-                                <input id="PepperoniPrecio"type="hidden" name="precio" value="10" />
-                              </div>
-                              <div class="col-6 col-lg-4">
-                                <input class="frm-button" type="checkbox" value="Jamón" id="ingrediente2">
-                                <label  for="ingrediente2">
-                                  Jamón
-                                </label>
-                                <input id="JamónPrecio"type="hidden" name="precio" value="10" />
-                              </div>
-                              <div class="col-6 col-lg-4">
-                                <input class="frm-button"  type="checkbox" value="Pimiento" id="ingrediente3">
-                                <label  for="ingrediente3">
-                                  Pimiento
-                                </label>
-                                <input id="PimientoPrecio"type="hidden" name="precio" value="10" />
-                              </div>
-                              <div class="col-6 col-lg-4">
-                                <input class="frm-button" type="checkbox" value="Champiñon" id="ingrediente4">
-                                <label  for="ingrediente4">
-                                  Champiñon
-                                </label>
-                                <input id="ChampiñonPrecio"type="hidden" name="precio" value="10" />
-                              </div>
+                            <h1 class="display-5 bg-green text-white text-center rounded">Ingredientes Extra</h1>
+                            <div class="row" id="extras">
+ 
                             </div>
                             </div>
 
@@ -215,6 +142,7 @@
                 </div>
             </div>
         </div>    
+      
     <footer class="page-footer text-white bg-dark pt-4 mt-4">
 
 

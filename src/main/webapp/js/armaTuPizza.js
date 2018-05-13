@@ -8,34 +8,36 @@ var selectedSize = null;
 
 $(document).ready(function(){
     
-        $(".frm-button").click(function(){
+        $("#form").on("click",".frm-button",function(){
             
-            var buttonName = $(this).val();
-            var itemPrice = $("#"+buttonName+"Precio").val();
+            var hitButton = $(this).val();
+            var itemPrice = $("#"+hitButton+"Precio").val();
+            var itemName = $("#"+hitButton+"Precio").attr("name");
             
-            if(isSizeButton( buttonName )){
+            if(isSizeButton( hitButton )){
                 
                 if(alreadySelected()){
                     deletePrevSelection();
                 }     
-                selectedSize = buttonName;
+                selectedSize = hitButton;
    
-                addNewSelection(buttonName,itemPrice);
+                addNewSelection(hitButton,itemPrice);
                 updateTotalCost(itemPrice);   
             }
             else{    
                 if(!$(this).is(":checked")){
+                    
                     var tableRow = $("td").filter(function(){
-                        return $(this).text() === buttonName;
+                        return $(this).text() === itemName;
                     }).closest("tr");               
                     
-                    totalCost -= parseFloat($("#"+buttonName+"Precio").val());
+                    totalCost -= parseFloat(itemPrice);
                     $("#displayTotal").text("Total $"+totalCost);
                     tableRow.remove();
                      
                 }
                 else{
-                    var row = "<tr><td>"+buttonName+"</td><td>"+itemPrice+"</td></tr>";
+                    var row = "<tr><td>"+itemName+"</td><td>"+itemPrice+"</td></tr>";
                     $("table tbody").append(row);
                     
                     totalCost += parseFloat(itemPrice);
@@ -53,7 +55,7 @@ function resetModal(){
         $(this).find('#form')[0].reset();
         totalCost = 0.0;
         selectedSize = null;
-        $("table tbody").html("")
+        $("table tbody").html("");
         $("#displayTotal").text("Total $"+totalCost);
         
 }
