@@ -14,8 +14,10 @@
         <link rel="stylesheet" href="scss\custombootstrap.css">
         <link href="open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
         <link href="css/custom_style.css" rel="stylesheet">
+        <link rel="stylesheet" href="lib/alertify/css/alertify.css" />
     </head>
     <body>
+        
         <main class="container bg-white w-75 mw-50 rounded mt-2">
             <div class="row">
                 <div class="col-12">
@@ -63,14 +65,28 @@
                                         <input type="password" class="form-control" id="inputPassword3" name="inputPassword3" placeholder="Repetir contraseña">
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="inputAddress">Nombre</label>
-                                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Su Nombre">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputAddress">Nombre</label>
+                                        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Su Nombre">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="apellido">Apellido Paterno</label>
+                                        <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Su Nombre">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputAddress">Apellido Materno</label>
+                                        <input type="text" class="form-control" id="inputSecndLastName" name="inputSecndLastName" placeholder="Su Nombre">
+                                    </div>
+                                    
                                 </div>
                                 <label for="inputAddress">Domicilio de entrega</label>
                                 <div class="form-row" id="inputAddress">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-5">
+                                        <label for="inputdistrict">municipio</label>
+                                        <input type="text" class="form-control" id="inputDistrict" name="inputDistrict">
+                                    </div>
+                                    <div class="form-group col-md-5">
                                         <label for="inputCity">Calle</label>
                                         <input type="text" class="form-control" id="inputStreet" name="inputStreet">
                                     </div>
@@ -92,7 +108,8 @@
         </main>
         <script src="js/jquery-3.3.1.js"></script>
         <script src="js/popper.js"></script>
-        <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+        <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>\
+        <script src="lib/alertify/alertify.js"></script>
         <script src="js/login.js"></script>
     </body>
 </html>

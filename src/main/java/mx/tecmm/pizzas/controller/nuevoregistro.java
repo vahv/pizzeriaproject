@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import mx.tecmm.pizzas.dao.userDAO;
 import mx.tecmm.pizzas.vo.Account;
 import mx.tecmm.pizzas.vo.Address;
+import mx.tecmm.pizzas.vo.Role;
 import mx.tecmm.pizzas.vo.User;
 
 /**
@@ -43,26 +44,49 @@ public class nuevoregistro extends HttpServlet {
             String contraseña = request.getParameter("inputPassword2");
             String contraseña2 = request.getParameter("inputPassword3");
             String nombre = request.getParameter("inputName");
+            String apep = request.getParameter("inputLastName");
+            String apem = request.getParameter("inputSecndLastName");
             String calle = request.getParameter("inputStreet");
             String numeroint = request.getParameter("inputNumber1");
+            String numeroext = null;
+            String municipio = request.getParameter("inputDistrict");
+            
+            Account cuenta = new Account();
+            Address adres = new Address();
+            
             if (!request.getParameter("inputNumber2").equals("")) {
-                Integer numeroext = Integer.parseInt(request.getParameter("inputNumber2"));
+                numeroext = request.getParameter("inputNumber2");
+                adres.setApartmentNumber(numeroext);
             }
             if (contraseña.equals(contraseña2)) {
-                Account cuenta = new Account();
+                
                 cuenta.setEmail(email);
                 cuenta.setPassword(contraseña);
+                cuenta.setRole(userDAO.getRol("select * from role where rolename =\"cliente\""));
+                cuenta.setStatus(true);
                 
-                Address adres = new Address();
                 adres.setStreet(calle);
                 adres.setBuildingNumber(numeroint);
+                adres.setDistrict(municipio);
+                adres.setStatus(true);
+                adres.setProvince(userDAO.getProvince("select * from province where id=1"));
+                
                 User user = new User();
                 user.setAddress(adres);
                 user.setName(nombre);
+                user.setLastName(apep);
+                user.setSecondLastName(apem);
                 user.setAccount(cuenta);
-
-                int i = userDAO.addUser(cuenta);
-                out.print(i);
+                user.setStatus(true);
+                adres.setUser(user);
+                
+                user.setAccount(userDAO.addAccount(cuenta));
+                adres.setUserId(userDAO.addUser(user));
+                int  i = userDAO.addAddress(adres);
+                if (i == 1) {
+                    request.login(cuenta.getEmail(), cuenta.getPassword());
+                    
+                }
             }else
                 out.print("equivocado");
         }
