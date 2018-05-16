@@ -133,7 +133,7 @@
                                   </tbody>
                                 </table>
                                 <h3 id ="displayTotal">Total $0 </h3>
-                                <a class="btn btn-primary btn-sm" href="" id="">Agregar al carrito</a>
+                                <a class="btn btn-primary btn-sm"  id="addCart">Agregar al carrito</a>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>

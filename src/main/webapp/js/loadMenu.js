@@ -6,7 +6,7 @@
  
    
 $(document).ready(function(){
-
+    
     $('#printbox').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); 
       var pizzaid = button.data('id');
@@ -29,6 +29,7 @@ $(document).ready(function(){
     });
     
     loadmenu();
+    
 });
 
     function loadmenu(){
@@ -74,3 +75,4 @@ function formatToppingList(list){
     }
     return toppings;
 }
+

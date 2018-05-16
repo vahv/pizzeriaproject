@@ -20,6 +20,7 @@ import org.hibernate.Transaction;
  * @author VictorAbel
  */
 public class PizzasDAO {
+    
     static public Pizza getPizza(Integer id){
         Session currentSession = null;
         Transaction currentTransaction = null;
