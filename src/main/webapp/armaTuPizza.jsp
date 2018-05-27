@@ -17,7 +17,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <a class="navbar-brand" href="#"><img class="nav-imag" src="assets/images/logo-nav.png" alt=""/></a>
+      <a class="navbar-brand" href="index.jsp"><img class="nav-imag" src="assets/images/logo-nav.png" alt=""/></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".mainNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,27 +25,27 @@
         <div class="collapse navbar-collapse mainNav" >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="#" id="navbarMenu">
+              <a class="nav-link" href="menu.jsp" id="navbarMenu">
                 Menú
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarArmarPizza">
+            <li class="nav-item active">
+              <a class="nav-link" href="armaTuPizza.jsp" id="navbarArmarPizza">
                 Arma tu pizza
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarMiCuenta">
+              <a class="nav-link" href="miCuenta.jsp" id="navbarMiCuenta">
                 Mi Cuenta
               </a>
             </li>
                         <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarVerCarrito">
+              <a class="nav-link" href="carrito.jsp" id="navbarVerCarrito">
                 Ver Carrito
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarCerrarSesión">
+              <a class="nav-link" href="cerrarSesion" id="navbarCerrarSesión">
                 Cerrar Sesión
               </a>
             </li>            
@@ -53,74 +53,48 @@
         </div>
       </div>
     </nav>
-
     <main class="container">
-        <form  action=""  method="post">
-            <div class="row justify-content-md-center">           
-                <div class="col-12 col-md-8 bg-white">
-                <h1 class="display-5 bg-green text-white text-center rounded">Seleccionar Tamaño</h1>
-                <div class="row">
-                  <div class="col">
-                    <label>
-                      <h5 class="text-center">Mediana</h5>
-                      <input type="radio" class="frm-button" name="tamanio" value="Mediana"/>
-                      <img src="assets\tamaños\Pizzas-mediana.png" class="img-fluid rounded">
-                      <input id="MedianaPrecio" type="hidden" name="precio" value="100" />
-                    </label>
-                  </div>
-                  <div class="col">
-                    <h5 class="text-center">Grande</h5>
-                    <label>
-                        <input type="radio" class="frm-button" name="tamanio" value="Grande"/>
-                      <img src="assets\tamaños\Pizzas-grande.png" class="img-fluid rounded">
-                      <input id="GrandePrecio" type="hidden" name="precio" value="140" />
-                    </label>
-                  </div>
-                  <div class="col">
-                    <h5 class="text-center">Familiar</h5>
-                    <label>
-                      <input type="radio" class="frm-button" name="tamanio" value="Familiar"/>
-                      <img src="assets\tamaños\Pizzas-familiar.png" class="img-fluid rounded">
-                      <input id="FamiliarPrecio"type="hidden" name="precio" value="180" />
-                    </label>
-                  </div>
+      <h1 class="text-white text-center">Arma tu pizza</h1>
+        <form  id="form"   method="post">
+            <input id="pizzaid" type="hidden" name="id" value="" />
+            <div class="row justify-content-md-center">
+                
+                <div class="col-12 col-md-8 bg-white rounded">
+                    <h1 id="sizes" class="display-5 bg-green text-white text-center rounded mt-2">Seleccionar Tamaño</h1>
+                    <div class="row">
+                        <div class="col">
+                          <label>
+                            <h5 class="text-center">Mediana</h5>
+                            <input type="radio" class="frm-button" name="tamanio" value="Mediana"/>
+                            <img src="assets\tamaños\Pizzas-mediana.png" class="img-fluid rounded">
+                            <input id="MedianaPrecio" type="hidden" name="precio" value="" />
+                          </label>
+                        </div>
+                        <div class="col">
+                          <h5 class="text-center">Grande</h5>
+                          <label>
+                              <input type="radio" class="frm-button" name="tamanio" value="Grande"/>
+                            <img src="assets\tamaños\Pizzas-grande.png" class="img-fluid rounded">
+                            <input id="GrandePrecio" type="hidden" name="precio" value="" />
+                          </label>
+                        </div>
+                        <div class="col">
+                          <h5 class="text-center">Familiar</h5>
+                          <label>
+                            <input type="radio" class="frm-button" name="tamanio" value="Familiar"/>
+                            <img src="assets\tamaños\Pizzas-familiar.png" class="img-fluid rounded">
+                            <input id="FamiliarPrecio" type="hidden" name="precio" value="" />
+                          </label>
+                        </div>
+                    </div>
+
+                    <h1 class="display-5 bg-green text-white text-center rounded">Seleccionar Ingredientes</h1>
+                    <div class="row" id="ingredientes">
+                    </div>
                 </div>
 
-                <h1 class="display-5 bg-green text-white text-center rounded">Seleccionar Ingredientes</h1>
-                <div class="row" id="ingredientes">
-                  <div class="col-md-4 col-6">
-                    <input class="frm-button" type="checkbox" value="Pepperoni" id="ingrediente1">
-                    <label  for="ingrediente2">
-                      Pepperoni
-                    </label>
-                    <input id="PepperoniPrecio"type="hidden" name="precio" value="10" />
-                  </div>
-                  <div class="col-md-4 col-6">
-                    <input class="frm-button" type="checkbox" value="Jamón" id="ingrediente2">
-                    <label  for="ingrediente2">
-                      Jamón
-                    </label>
-                    <input id="JamónPrecio"type="hidden" name="precio" value="10" />
-                  </div>
-                  <div class="col-md-4 col-6">
-                    <input class="frm-button"  type="checkbox" value="Pimiento" id="ingrediente3">
-                    <label  for="ingrediente3">
-                      Pimiento
-                    </label>
-                    <input id="PimientoPrecio"type="hidden" name="precio" value="10" />
-                  </div>
-                  <div class="col-md-4 col-6">
-                    <input class="frm-button" type="checkbox" value="Champiñon" id="ingrediente4">
-                    <label  for="ingrediente4">
-                      Champiñon
-                    </label>
-                    <input id="ChampiñonPrecio"type="hidden" name="precio" value="10" />
-                  </div>
-                </div>
-                </div>
-
-                <div class="col-12 col-md-4 bg-white">
-                    <h1 class="display-5 bg-green text-white text-center rounded">Precio</h1>
+                <div class="col-12 col-md-3 bg-white rounded ml-2">
+                    <h1 class="display-5 bg-green text-white text-center rounded mt-2">Precio</h1>
                     <table class="table">
                       <thead>
                         <tr>
@@ -133,7 +107,7 @@
                       </tbody>
                     </table>
                     <h3 id ="displayTotal">Total $0 </h3>
-                    <a class="btn btn-primary btn-sm" href="" id="">Agregar al carrito</a>
+                    <a class="btn btn-primary btn-sm text-white" id="addCart">Agregar al carrito</a>
                 </div>
             </div>
        </form>
@@ -174,8 +148,11 @@
     </footer>
 
   </body>
-  <script src="js/popper.js"></script>
+  <script src="js/popper.js" ></script>
   <script src="js/jquery-3.3.1.js"></script>
   <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+  <script src="lib/bootbox/bootbox.min.js" type="text/javascript"></script>
   <script src="js/armaTuPizza.js" type="text/javascript"></script>
+  <script src="js/pizzaDetails.js" type="text/javascript"></script>
+  <script src="lib/jquery_validate/jquery.validate.min.js" type="text/javascript"></script>
 </html>

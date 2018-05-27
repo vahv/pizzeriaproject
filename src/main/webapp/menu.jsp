@@ -17,37 +17,35 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-brand" href="#"><img class="nav-imag" src="assets/images/logo-nav.png" alt=""/></a>
-        
+      <a class="navbar-brand" href="index.jsp"><img class="nav-imag" src="assets/images/logo-nav.png" alt=""/></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".mainNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
       <div class="container">
         <div class="collapse navbar-collapse mainNav" >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="#" id="navbarMenu">
+              <a class="nav-link active" href="menu.jsp" id="navbarMenu">
                 Menú
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarArmarPizza">
+              <a class="nav-link" href="armaTuPizza.jsp" id="navbarArmarPizza">
                 Arma tu pizza
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarMiCuenta">
+              <a class="nav-link" href="miCuenta.jsp" id="navbarMiCuenta">
                 Mi Cuenta
               </a>
             </li>
                         <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarVerCarrito">
+              <a class="nav-link" href="carrito.jsp" id="navbarVerCarrito">
                 Ver Carrito
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="navbarCerrarSesión">
+              <a class="nav-link" href="cerrarSesion" id="navbarCerrarSesión">
                 Cerrar Sesión
               </a>
             </li>            
@@ -58,13 +56,13 @@
 
     <main class="container">
 
-          <h1 class="display-5 bg-green text-white text-center">Categoría 1</h1>
+          <h1 class="display-5 bg-green text-white text-center">Tradicionales</h1>
           <div class="row" id="category1">
 
 
           </div>
 
-          <h1 class="display-5 bg-green text-white text-center">Categoría 2</h1>
+          <h1 class="display-5 bg-green text-white text-center">Especiales</h1>
           <div class="row" id="category2">
 
           </div>
@@ -72,7 +70,7 @@
 
 
 
-        <div class="modal fade" id="printbox" tabindex="1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="pizzaModal" tabindex="1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -133,8 +131,8 @@
                                   </tbody>
                                 </table>
                                 <h3 id ="displayTotal">Total $0 </h3>
-                                <a class="btn btn-primary btn-sm" href="" id="">Agregar al carrito</a>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <a class="btn btn-primary btn-sm text-white"  id="addCart">Agregar al carrito</a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                             </div>
                         </div>
                     </form>                       
@@ -188,7 +186,9 @@
   <script src="js/popper.js" type="text/javascript"></script>
   <script src="js/jquery-3.3.1.js"></script>
   <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+  <script src="lib/bootbox/bootbox.min.js" type="text/javascript"></script>
   <script src="js/loadMenu.js" type="text/javascript"></script>
-  <script src="js/armaTuPizza.js" type="text/javascript"></script>
+  <script src="js/pizzaDetails.js" type="text/javascript"></script>
+  <script src="lib/jquery_validate/jquery.validate.min.js" type="text/javascript"></script>
   </body>
 </html>

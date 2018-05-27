@@ -7,27 +7,30 @@ package mx.tecmm.pizzas.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import mx.tecmm.pizzas.dao.OrdersDAO;
 import mx.tecmm.pizzas.dao.PizzasDAO;
+import mx.tecmm.pizzas.vo.ExtraTopping;
+import mx.tecmm.pizzas.vo.CartItem;
 import mx.tecmm.pizzas.vo.Pizza;
+import mx.tecmm.pizzas.vo.PizzaSize;
 import mx.tecmm.pizzas.vo.Topping;
-
 
 /**
  *
  * @author VictorAbel
  */
-@WebServlet(name = "getMenu", urlPatterns = {"/getMenu"})
-public class GetMenu extends HttpServlet {
+@WebServlet(name = "addToCart", urlPatterns = {"/addToCart"})
+public class AddToCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,37 +43,51 @@ public class GetMenu extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charset=utf-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            List<Pizza> listaPizzas = PizzasDAO.getPizzas("select * from pizza where status = 1 ");
-            List<Topping> listaExtraToppings = PizzasDAO.getToppings("SELECT * FROM topping where canBeExtra = 1 and  status = 1");
-            JsonArray array =  new JsonArray();
+            HttpSession session = request.getSession();
             
-            JsonArray pizzas = new JsonArray();
-            
-            for(Pizza pizza: listaPizzas){
-                JsonObject json= new JsonObject();
-                json.addProperty("id", pizza.getId());
-                json.addProperty("pizzaName",pizza.getPizzaName());
-                json.addProperty("pizzaImage",pizza.getPizzaImage());
-                json.addProperty("categoryName",pizza.getCategoryName());
-                json.addProperty("status",pizza.getStatus());
-                pizzas.add(json);
+            List<CartItem> cartItems = new ArrayList<>();
+            Integer cartItemID = 1;
+            if(session.getAttribute("cartItems")!= null){
+                cartItems = (List<CartItem>)session.getAttribute("cartItems");
+                cartItemID += cartItems.get(cartItems.size()-1).getId();
             }
-            array.add(pizzas);
-            JsonArray toppings =  new JsonArray();
+
             
-            for (Topping topping : listaExtraToppings) {
-                JsonObject json2 = new JsonObject();
-                json2.addProperty("id", topping.getId());
-                json2.addProperty("name",topping.getName());
-                json2.addProperty("price",topping.getPrice());
-                toppings.add(json2);
+            
+            String itemId = request.getParameter("id");
+            String size = request.getParameter("tamanio");
+            String[] checkedExtraToppings = request.getParameterValues("extraTopping");
+          
+            PizzaSize pizzaSize = PizzasDAO.getPizzaSizes("select pizzasize.id, pizza_id, size_id, precio, pizzasize.status from pizzasize inner join size on (name='"+size+"' and size_id=size.id)where pizza_id="+itemId).get(0);
+            Pizza pizza = PizzasDAO.getPizza(Integer.parseInt(itemId));
+
+            CartItem cartItem = new CartItem();
+                  cartItem.setId(cartItemID);
+                  cartItem.setItem_id(pizza.getId());
+                  cartItem.setOrderItemName(pizza.getPizzaName());
+                  cartItem.setImage(pizza.getPizzaImage());
+                  cartItem.setSize(size);
+                  cartItem.setPrice(pizzaSize.getPrecio());
+                  cartItem.setQuantity(1);
+                  cartItem.setStatus(new Byte("1"));
+                  cartItem.setExtraToppings(new Byte("0"));
+                  cartItem.setExtraToppingList(new ArrayList<Topping>());
+            
+            if(checkedExtraToppings != null){
+                cartItem.setExtraToppings(new Byte("1"));
+                String queryToppings="SELECT * FROM topping where id in ( ";
+                for(int i=0; i<checkedExtraToppings.length;i++){
+                   queryToppings+=checkedExtraToppings[i]+((i+1 != checkedExtraToppings.length)?", ":")");
+                }
+                List<Topping> toppingList = PizzasDAO.getToppings(queryToppings);
+                cartItem.setExtraToppingList((ArrayList<Topping>) toppingList);
             }
-            array.add(toppings);
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            out.print(gson.toJson(array));
+            cartItems.add(cartItem);
+            
+            session.setAttribute("cartItems", cartItems);
         }
     }
 
