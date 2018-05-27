@@ -4,4 +4,3 @@ lib/
 src/test/
 src/main/resources/hibernate.cfg.xml
 src/main/resources
-src/main/java/mx/tecmm/pizzas/vo
