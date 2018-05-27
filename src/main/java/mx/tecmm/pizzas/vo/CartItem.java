@@ -15,7 +15,9 @@ public class CartItem {
     private Integer id;
     private Integer item_id;
     private String orderItemName;
+    private String image;
     private Byte extraToppings;
+    private String size;
     private Double price;
     private Integer quantity;
     private Byte status;
@@ -53,6 +55,13 @@ public class CartItem {
     public void setExtraToppings(Byte extraToppings) {
         this.extraToppings = extraToppings;
     }
+        public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
     
     public Double getPrice() {
         return price;
@@ -85,5 +94,14 @@ public class CartItem {
     public void setExtraToppingList(ArrayList<Topping> extraToppingList) {
         this.extraToppingList = extraToppingList;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
 }   
 

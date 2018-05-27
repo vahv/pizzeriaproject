@@ -29,3 +29,12 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 .nav-imag{
     height:3rem;
 }
+
+.page-footer{
+
+}
+
+.cartItemImage{
+    max-height: 6em; 
+    margin-top: 2em;
+}

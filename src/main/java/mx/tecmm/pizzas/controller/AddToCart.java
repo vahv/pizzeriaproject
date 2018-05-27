@@ -61,16 +61,15 @@ public class AddToCart extends HttpServlet {
             String size = request.getParameter("tamanio");
             String[] checkedExtraToppings = request.getParameterValues("extraTopping");
           
-            
             PizzaSize pizzaSize = PizzasDAO.getPizzaSizes("select pizzasize.id, pizza_id, size_id, precio, pizzasize.status from pizzasize inner join size on (name='"+size+"' and size_id=size.id)where pizza_id="+itemId).get(0);
             Pizza pizza = PizzasDAO.getPizza(Integer.parseInt(itemId));
-            
-          
 
             CartItem cartItem = new CartItem();
                   cartItem.setId(cartItemID);
                   cartItem.setItem_id(pizza.getId());
                   cartItem.setOrderItemName(pizza.getPizzaName());
+                  cartItem.setImage(pizza.getPizzaImage());
+                  cartItem.setSize(size);
                   cartItem.setPrice(pizzaSize.getPrecio());
                   cartItem.setQuantity(1);
                   cartItem.setStatus(new Byte("1"));
@@ -89,8 +88,6 @@ public class AddToCart extends HttpServlet {
             cartItems.add(cartItem);
             
             session.setAttribute("cartItems", cartItems);
-            
-            out.print("Added");
         }
     }
 

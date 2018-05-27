@@ -46,7 +46,11 @@ public class RemoveFromCart extends HttpServlet {
             cartItems = (ArrayList<CartItem>) session.getAttribute("cartItems");
             cartItems.remove(index);
             
-            session.setAttribute("cartItems", cartItems);
+            
+            if(cartItems.isEmpty())
+                session.removeAttribute("cartItems");
+            else
+                session.setAttribute("cartItems", cartItems);
             
         }
     }
